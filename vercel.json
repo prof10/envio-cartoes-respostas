@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/Painel_Avalia_Cartoes.html"
+    }
+  ]
+}
