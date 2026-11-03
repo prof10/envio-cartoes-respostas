@@ -1,0 +1,10 @@
+# Nunca versionar exportações brutas com dados pessoais
+*.xlsx
+*.xls
+*.csv
+# Relatórios temporários produzidos pelo atualizador
+validacao_atualizacao.json
+__pycache__/
+*.pyc
+.env
+.env.*
