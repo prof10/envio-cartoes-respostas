@@ -2,6 +2,7 @@
 """Teste de ponta a ponta sem dados pessoais: gera um XLSX fictício e roda o atualizador real."""
 import collections
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -61,7 +62,10 @@ def main():
         old_data, length = json.JSONDecoder().raw_decode(before[start:])
         assert len(old_data["rows"]) > 0
 
-        cmd = [sys.executable, str(SCRIPT), "--excel", str(excel),
+        (tmp / "tools").mkdir()
+        temp_script = tmp / "tools" / "atualizar_painel.py"
+        shutil.copy2(SCRIPT, temp_script)
+        cmd = [sys.executable, str(temp_script), "--excel", str(excel),
                "--snapshot", "03/11/2026 às 13:40"]
         result = subprocess.run(cmd, cwd=tmp, capture_output=True, text=True)
         if result.returncode:
