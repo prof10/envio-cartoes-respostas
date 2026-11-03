@@ -1,0 +1,16 @@
+name: Validar painel HTML
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Painel_Avalia_Cartoes.html'
+      - 'tools/**'
+      - '.github/workflows/validar-painel.yml'
+  workflow_dispatch:
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar HTML e consistência da base
+        run: python3 tools/validar_html.py
